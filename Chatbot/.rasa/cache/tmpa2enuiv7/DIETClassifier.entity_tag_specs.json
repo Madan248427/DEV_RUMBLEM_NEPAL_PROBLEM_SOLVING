@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-author_name",
+      "2": "I-author_name",
+      "3": "L-author_name",
+      "4": "U-author_name",
+      "5": "B-book_title",
+      "6": "I-book_title",
+      "7": "L-book_title",
+      "8": "U-book_title",
+      "9": "B-category",
+      "10": "I-category",
+      "11": "L-category",
+      "12": "U-category",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-author_name": 1,
+      "I-author_name": 2,
+      "L-author_name": 3,
+      "U-author_name": 4,
+      "B-book_title": 5,
+      "I-book_title": 6,
+      "L-book_title": 7,
+      "U-book_title": 8,
+      "B-category": 9,
+      "I-category": 10,
+      "L-category": 11,
+      "U-category": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

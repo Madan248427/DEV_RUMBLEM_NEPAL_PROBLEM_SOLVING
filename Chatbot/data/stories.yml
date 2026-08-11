@@ -1,0 +1,305 @@
+version: "3.1"
+
+stories:
+  # ===============================
+  # GREETING FLOWS
+  # ===============================
+
+  - story: greet only
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - story: greet and goodbye
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: greet and help
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: help
+      - action: utter_help
+
+  # ===============================
+  # SEARCH BOOK FLOWS
+  # ===============================
+
+  - story: search book simple
+    steps:
+      - intent: search_book
+      - action: action_search_book
+
+  - story: greet then search
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: search_book
+      - action: action_search_book
+
+  - story: search then check availability
+    steps:
+      - intent: search_book
+      - action: action_search_book
+      - intent: check_availability
+      - action: action_search_book
+
+  - story: search then issue book
+    steps:
+      - intent: search_book
+      - action: action_search_book
+      - intent: issue_book
+      - action: utter_ask_issue_book
+
+  - story: search then deny
+    steps:
+      - intent: search_book
+      - action: action_search_book
+      - intent: deny
+      - action: utter_deny
+
+  - story: search then affirm
+    steps:
+      - intent: search_book
+      - action: action_search_book
+      # - intent: affirm
+      # - action: utter_affirm
+
+  # ===============================
+  # CHECK AVAILABILITY FLOWS
+  # ===============================
+
+  - story: check availability only
+    steps:
+      - intent: check_availability
+      - action: action_search_book
+
+  - story: greet check availability
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: check_availability
+      - action: action_search_book
+
+  - story: check availability then reserve
+    steps:
+      - intent: check_availability
+      - action: action_search_book
+      - intent: reserve_book
+      - action: action_reserve_book
+
+  # ===============================
+  # ISSUE BOOK FLOWS
+  # ===============================
+
+  # - story: issue book confirm
+  #   steps:
+  #     - intent: issue_book
+  #     - action: action_issue_book
+  #     - intent: affirm
+  #     - action: utter_affirm
+
+  # - story: issue book deny
+  #   steps:
+  #     - intent: issue_book
+  #     - action: utter_ask_issue_book
+  #     - intent: deny
+  #     - action: utter_deny
+
+  - story: issue then check due date
+    steps:
+      - intent: issue_book
+      - action: utter_ask_issue_book
+      - intent: check_due_date
+      - action: action_check_due_date
+
+  # ===============================
+  # RETURN BOOK FLOWS
+  # ===============================
+
+  - story: return book confirm
+    steps:
+      - intent: return_book
+      - action: utter_ask_return_book
+      # - intent: affirm
+      # - action: utter_affirm
+
+  - story: return then fine check
+    steps:
+      - intent: return_book
+      - action: utter_ask_return_book
+      # - intent: fine_status
+      # - action: action_check_fine
+
+  # ===============================
+  # RENEW BOOK FLOWS
+  # ===============================
+
+  - story: renew simple
+    steps:
+      - intent: renew_book
+      - action: utter_renew_book
+
+  - story: renew then check due date
+    steps:
+      - intent: renew_book
+      - action: utter_renew_book
+      - intent: check_due_date
+      - action: action_check_due_date
+
+  # ===============================
+  # RESERVATION FLOWS
+  # ===============================
+
+  - story: reserve confirm
+    steps:
+      - intent: reserve_book
+      - action: action_reserve_book
+      # - intent: affirm
+      # - action: utter_affirm
+
+  - story: reserve then cancel
+    steps:
+      - intent: reserve_book
+      - action: action_reserve_book
+      - intent: cancel_reservation
+      - action: utter_ask_cancel_reservation
+
+  - story: cancel reservation only
+    steps:
+      - intent: cancel_reservation
+      - action: utter_ask_cancel_reservation
+
+  # ===============================
+  # VIEW HISTORY FLOWS
+  # ===============================
+
+  - story: view history flow
+    steps:
+      - intent: view_history
+      - action: action_view_history
+
+  # ===============================
+  # FINE FLOWS
+  # ===============================
+
+  # - story: check fine only
+  #   steps:
+  #     - intent: fine_status
+  #     - action: action_check_fine
+
+  # - story: fine then help
+  #   steps:
+  #     - intent: fine_status
+  #     - action: action_check_fine
+  #     - intent: help
+  #     - action: utter_help
+
+  # ===============================
+  # FAQ FLOWS
+  # ===============================
+
+  - story: faq app name
+    steps:
+      - intent: faq_app_name
+      - action: utter_faq_app_name
+
+  - story: faq app purpose
+    steps:
+      - intent: faq_app_purpose
+      - action: utter_faq_app_purpose
+
+  - story: faq membership cost
+    steps:
+      - intent: faq_membership_cost
+      - action: utter_faq_membership_cost
+
+  - story: faq password reset
+    steps:
+      - intent: faq_password_reset
+      - action: utter_faq_password_reset
+
+  - story: greet then faq purpose
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: faq_app_purpose
+      - action: utter_faq_app_purpose
+
+  # ===============================
+  # SMALL TALK FLOWS
+  # ===============================
+
+  - story: small talk only
+    steps:
+      - intent: small_talk
+      - action: utter_small_talk
+
+  - story: greet then small talk
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: small_talk
+      - action: utter_small_talk
+
+  # ===============================
+  # COMPLAINT FLOWS
+  # ===============================
+
+  - story: complain only
+    steps:
+      - intent: complain
+      - action: utter_complain
+
+  - story: complain then contact
+    steps:
+      - intent: complain
+      - action: utter_complain
+      - intent: ask_contact
+      - action: utter_ask_contact
+
+  # ===============================
+  # MULTI STEP COMPLEX FLOWS
+  # ===============================
+
+  - story: full user journey
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: search_book
+      - action: action_search_book
+      - intent: check_availability
+      - action: action_search_book
+      - intent: issue_book
+      - action: utter_ask_issue_book
+      - intent: check_due_date
+      - action: action_check_due_date
+      - intent: thank_you
+      - action: utter_thank_you
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - story: search reserve renew flow
+    steps:
+      - intent: search_book
+      - action: action_search_book
+      - intent: reserve_book
+      - action: action_reserve_book
+      - intent: renew_book
+      - action: utter_renew_book
+      - intent: check_due_date
+      - action: action_check_due_date
+
+  - story: return and fine and complain
+    steps:
+      - intent: return_book
+      - action: utter_ask_return_book
+      # - intent: fine_status
+      # - action: action_check_fine
+      - intent: complain
+      - action: utter_complain
+      - intent: ask_contact
+      - action: utter_ask_contact

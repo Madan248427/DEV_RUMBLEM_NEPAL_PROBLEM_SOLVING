@@ -1,0 +1,217 @@
+version: "3.1"
+
+rules:
+  # ===============================
+  # SIMPLE ONE-TURN RESPONSES ONLY
+  # ===============================
+
+  - rule: Greet user
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Goodbye user
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Help user
+    steps:
+      - intent: help
+      - action: utter_help
+
+  - rule: Help
+    steps:
+      - intent: help
+      - action: utter_help
+
+  - rule: Library hours
+    steps:
+      - intent: library_hours
+      - action: utter_library_hours
+
+  - rule: Contact info
+    steps:
+      - intent: ask_contact
+      - action: utter_ask_contact
+
+  - rule: FAQ App name
+    steps:
+      - intent: faq_app_name
+      - action: utter_faq_app_name
+
+  - rule: FAQ App purpose
+    steps:
+      - intent: faq_app_purpose
+      - action: utter_faq_app_purpose
+
+  - rule: Search book
+    steps:
+      - intent: search_book
+      - action: action_search_book
+
+  # Rule for checking availability
+  - rule: Check book availability
+    steps:
+      - intent: check_availability
+      - action: action_search_book
+
+  # Rule for issuing a book
+  - rule: Issue a book
+    steps:
+      - intent: issue_book
+      - action: utter_ask_issue_book
+
+  # Rule for deny intent after search
+  - rule: Deny after search
+    steps:
+      - intent: deny
+      - action: utter_deny
+
+  # Rule for affirm intent after search - moved to stories for context
+  # (Stories now handle the context-specific affirm responses)
+
+  - rule: FAQ Membership cost
+    steps:
+      - intent: faq_membership_cost
+      - action: utter_faq_membership_cost
+
+  - rule: FAQ Password reset
+    steps:
+      - intent: faq_password_reset
+      - action: utter_faq_password_reset
+
+  - rule: Check availability
+    steps:
+      - intent: check_availability
+      - action: action_search_book
+
+  # Rule for reserving a book
+  - rule: Reserve a book
+    steps:
+      - intent: reserve_book
+      - action: action_reserve_book
+
+  - rule: Issue a book
+    steps:
+      - intent: issue_book
+      - action: utter_ask_issue_book
+
+  # Rule for checking due date
+  - rule: Check due date
+    steps:
+      - intent: check_due_date
+      - action: action_check_due_date
+
+  # ===============================
+  # RETURN BOOK RULES
+  # ===============================
+  - rule: Return a book
+    steps:
+      - intent: return_book
+      - action: utter_ask_return_book
+
+  # - rule: Check fine after return
+  #   steps:
+  #     - intent: fine_status
+  #     - action: action_check_fine
+
+  # ===============================
+  # RENEW BOOK RULES
+  # ===============================
+  - rule: Renew a book
+    steps:
+      - intent: renew_book
+      - action: utter_renew_book
+
+  - rule: Check due date after renew
+    steps:
+      - intent: check_due_date
+      - action: action_check_due_date
+
+  # ===============================
+  # RESERVATION RULES
+  # ===============================
+  - rule: Reserve a book
+    steps:
+      - intent: reserve_book
+      - action: action_reserve_book
+
+  - rule: Cancel a reservation
+    steps:
+      - intent: cancel_reservation
+      - action: utter_ask_cancel_reservation
+
+  # ===============================
+  # VIEW HISTORY RULES
+  # ===============================
+  - rule: View history confirmed
+    steps:
+      - intent: view_history
+      - action: action_view_history
+
+  # ===============================
+  # FINE RULES
+  # ===============================
+  # - rule: Check fine
+  #   steps:
+  #     - intent: fine_status
+  #     - action: action_check_fine
+
+  - rule: FAQ app name
+    steps:
+      - intent: faq_app_name
+      - action: utter_faq_app_name
+
+  - rule: FAQ app purpose
+    steps:
+      - intent: faq_app_purpose
+      - action: utter_faq_app_purpose
+
+  - rule: FAQ membership cost
+    steps:
+      - intent: faq_membership_cost
+      - action: utter_faq_membership_cost
+
+  - rule: FAQ password reset
+    steps:
+      - intent: faq_password_reset
+      - action: utter_faq_password_reset
+
+  # ===============================
+  # SMALL TALK RULES
+  # ===============================
+  - rule: Small talk
+    steps:
+      - intent: small_talk
+      - action: utter_small_talk
+
+  # ===============================
+  # COMPLAINT RULES
+  # ===============================
+  - rule: Complain
+    steps:
+      - intent: complain
+      - action: utter_complain
+
+  - rule: Ask contact after complain
+    steps:
+      - intent: ask_contact
+      - action: utter_ask_contact
+
+  # ===============================
+  # FALLBACK
+  # ===============================
+
+  - rule: Default fallback
+    steps:
+      - intent: nlu_fallback
+      - action: utter_default
+  - rule: book_recommendation
+    steps:
+      - intent: book_recommendation
+      - action: action_recommendation
+  - rule: Explain signup process
+    steps:
+      - intent: how_to_signup
+      - action: utter_how_to_signup
