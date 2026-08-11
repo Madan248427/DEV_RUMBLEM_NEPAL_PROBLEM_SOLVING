@@ -1,0 +1,219 @@
+/* ================================
+   Main Content Wrapper
+   Applies to all pages next to sidebar
+=================================== */
+.main-content {
+    margin-left: 260px;
+    /* space for sidebar */
+    padding: 24px;
+    min-height: 100vh;
+    background: #f8f9fc;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+}
+
+/* ================================
+   Notifications Page
+=================================== */
+.notifications-page {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Header */
+.notifications-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.notifications-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.notifications-header-left h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #8a94a6;
+    margin: 0;
+}
+
+/* Notification List */
+.notifications-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ================================
+   Notification Card
+=================================== */
+.notification-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px 20px;
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid #edf0f5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.notification-card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Unread notification style */
+.notification-card.unread {
+    border-left: 3px solid #4361ee;
+    background: #fafbff;
+    padding-left: 20px;
+    /* subtle indentation for unread */
+}
+
+/* Read notifications: remove extra indentation */
+.notification-card:not(.unread) {
+    padding-left: 16px;
+}
+
+/* Notification Icon */
+.notification-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+/* Icon types */
+.notification-icon.issued {
+    background: #e8edff;
+    color: #4361ee;
+}
+
+.notification-icon.returned {
+    background: #e6f9f0;
+    color: #22c55e;
+}
+
+.notification-icon.reserved {
+    background: #fff4e6;
+    color: #f59e0b;
+}
+
+.notification-icon.overdue {
+    background: #ffe8e8;
+    color: #ef4444;
+}
+
+.notification-icon.general {
+    background: #f0f3ff;
+    color: #8a94a6;
+}
+
+/* Notification Body */
+.notification-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.notification-body h4 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1f36;
+    margin: 0 0 4px;
+}
+
+.notification-body p {
+    font-size: 13px;
+    color: #4a5568;
+    margin: 0 0 6px;
+    line-height: 1.5;
+}
+
+.notification-time {
+    font-size: 11px;
+    color: #8a94a6;
+}
+
+/* Unread dot */
+.notification-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #4361ee;
+    flex-shrink: 0;
+    margin-top: 8px;
+}
+
+/* ================================
+   Empty Notifications
+=================================== */
+.notifications-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.notifications-empty .anticon {
+    font-size: 48px;
+    color: #d1d5db;
+    margin-bottom: 16px;
+}
+
+.notifications-empty h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1f36;
+    margin: 0 0 8px;
+}
+
+.notifications-empty p {
+    font-size: 14px;
+    color: #8a94a6;
+    margin: 0;
+}
+
+/* ================================
+   Responsive adjustments
+=================================== */
+@media (max-width: 768px) {
+    .notifications-list {
+        gap: 6px;
+    }
+
+    .notification-card {
+        padding: 14px 16px;
+        gap: 12px;
+    }
+
+    .notification-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 16px;
+    }
+
+    .notification-dot {
+        width: 6px;
+        height: 6px;
+        margin-top: 6px;
+    }
+}

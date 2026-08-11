@@ -1,0 +1,29 @@
+/* Layout wrapper */
+.user-layout {
+    display: flex;
+}
+
+/* Main content area */
+.user-main {
+    margin-left: 260px;
+    /* same as sidebar width */
+    width: calc(100% - 260px);
+    min-width: 0;
+    /* 🔥 VERY IMPORTANT */
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+/* Prevent global horizontal scroll */
+body {
+    overflow-x: hidden;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .user-main {
+        margin-left: 0;
+        width: 100%;
+        padding: 16px;
+    }
+}

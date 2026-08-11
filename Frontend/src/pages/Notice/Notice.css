@@ -1,0 +1,53 @@
+.notice-layout {
+    min-height: 100vh;
+    background: #f5f7fa;
+    padding: 40px;
+}
+
+.notice-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.notice-title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.notice-card {
+    margin-bottom: 20px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.notice-card.unread {
+    border-left: 5px solid #1890ff;
+    background: #f0f8ff;
+}
+
+.notice-card.read {
+    opacity: 0.9;
+}
+
+.notice-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notice-message {
+    display: block;
+    margin: 15px 0;
+    font-size: 15px;
+}
+
+.notice-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.notice-loading {
+    text-align: center;
+    margin-top: 50px;
+}

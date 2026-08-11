@@ -1,0 +1,98 @@
+.sidebar {
+  background: #001529;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 16px;
+  text-align: center;
+  background: #0c0e16;
+  border-bottom: 1px solid #414141;
+}
+
+.sidebar-logo h2 {
+  color: #1890ff;
+  margin: 0;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.sidebar-user {
+  padding: 16px;
+  border-bottom: 1px solid #414141;
+}
+
+.user-info {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.user-info:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.user-name {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.user-role {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 11px;
+}
+
+.sidebar-menu {
+  flex: 1;
+  overflow-y: auto;
+  border-right: none;
+}
+
+.sidebar-menu .ant-menu-item {
+  height: 40px;
+  line-height: 40px;
+  margin: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.sidebar-footer {
+  padding: 16px;
+  border-top: 1px solid #414141;
+  background: #0c0e16;
+}
+
+.sidebar-footer button {
+  height: 40px;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+  }
+
+  .sidebar-logo h2 {
+    font-size: 16px;
+  }
+}

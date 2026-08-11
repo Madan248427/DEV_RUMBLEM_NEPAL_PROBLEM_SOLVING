@@ -1,0 +1,64 @@
+.edit-book-content {
+  flex: 1;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+}
+
+.back-button {
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: #1890ff;
+}
+
+.back-button:hover {
+  color: #0050b3;
+}
+
+.edit-book-card {
+  margin-top: 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+.ant-form-item {
+  margin-bottom: 16px;
+}
+
+.ant-form-item-label > label {
+  font-weight: 600;
+  color: #1890ff;
+}
+
+.ant-input,
+.ant-input-number,
+.ant-select-selector,
+.ant-picker,
+.ant-input-textarea {
+  border-radius: 4px;
+}
+
+.ant-input:focus,
+.ant-input-number-focused,
+.ant-select-focused .ant-select-selector {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.ant-upload-list-item {
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 16px;
+  }
+
+  .page-title {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+
+  .edit-book-card {
+    margin-top: 12px;
+  }
+}

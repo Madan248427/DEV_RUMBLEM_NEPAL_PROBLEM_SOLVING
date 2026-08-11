@@ -1,0 +1,266 @@
+/* =========================
+   Book Detail Page
+========================= */
+.bookdetail-page {
+    padding: 28px;
+    animation: fadeIn 0.35s ease;
+    background: #f5f7fb;
+}
+
+/* Back Button */
+.bookdetail-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4361ee;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.bookdetail-back:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Main Card
+========================= */
+.bookdetail-content {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 36px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 36px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================
+   Cover Section
+========================= */
+.bookdetail-cover-section {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+}
+
+.bookdetail-cover {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 16px;
+    object-fit: cover;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    background: #eaeefe;
+}
+
+/* Reserve Button */
+.bookdetail-actions {
+    width: 100%;
+}
+
+.bookdetail-actions .ant-btn {
+    width: 100%;
+    height: 46px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+/* =========================
+   Info Section
+========================= */
+.bookdetail-info h1 {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1a1f36;
+    margin-bottom: 6px;
+}
+
+.bookdetail-info p {
+    font-size: 14px;
+    color: #556070;
+    margin: 6px 0;
+}
+
+/* =========================
+   Meta Info Cards
+========================= */
+.bookdetail-meta {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin: 26px 0;
+}
+
+.bookdetail-meta-item {
+    background: #f8f9fe;
+    border-radius: 12px;
+    padding: 14px 16px;
+    border: 1px solid #edf0f5;
+}
+
+.bookdetail-meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #8a94a6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bookdetail-meta-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1f36;
+    margin-top: 4px;
+}
+
+/* =========================
+   Description
+========================= */
+.bookdetail-description {
+    margin-top: 12px;
+}
+
+.bookdetail-description h3 {
+    font-size: 17px;
+    font-weight: 600;
+    color: #1a1f36;
+    margin-bottom: 10px;
+}
+
+.bookdetail-description p {
+    font-size: 14px;
+    line-height: 1.75;
+    color: #4a5568;
+}
+
+/* =========================
+   Author Section
+========================= */
+.bookdetail-author {
+    
+    margin-top: 100px;
+    background: #f8f9fe;
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.bookdetail-author h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.author-info {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+}
+
+.author-image {
+    width: 90px;
+    height: 90px;
+    border-radius: 14px;
+    object-fit: cover;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.author-text p {
+    font-size: 14px;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+/* =========================
+   Availability Section
+========================= */
+.bookdetail-availability {
+    grid-column: 2 / -1;
+    /* ⬅ aligns with author */
+    margin-top: 32px;
+    background: #f8f9fe;
+    border-radius: 16px;
+    padding: 22px;
+}
+
+.bookdetail-availability h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 18px;
+}
+
+.availability-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+}
+
+.availability-item {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.availability-item h4 {
+    font-size: 26px;
+    font-weight: 700;
+    margin: 0;
+    color: #4361ee;
+}
+
+.availability-item p {
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    color: #8a94a6;
+    text-transform: uppercase;
+}
+
+/* =========================
+   Mobile
+========================= */
+@media (max-width: 900px) {
+    .bookdetail-content {
+        grid-template-columns: 1fr;
+        padding: 24px;
+    }
+
+    .bookdetail-cover-section {
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    .bookdetail-meta {
+        grid-template-columns: 1fr;
+    }
+
+    .availability-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .author-info {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,159 @@
+/* Container for all pages that sit next to the sidebar */
+.main-content {
+    margin-left: 260px;
+    /* same as sidebar width */
+    padding: 24px;
+    min-height: 100vh;
+    background: #f8f9fc;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease;
+}
+
+/* When sidebar is collapsed (mobile) */
+@media (max-width: 768px) {
+    .main-content {
+        margin-left: 0;
+        padding: 16px;
+    }
+}
+
+/* Issued Books Page */
+.issued-books-page h2 {
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #1a1f36;
+}
+
+/* Tabs styling */
+.issued-books-page .ant-tabs-nav-list {
+    gap: 12px;
+}
+
+.issued-books-page .ant-tabs-tab {
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.issued-books-page .ant-tabs-tab-active {
+    color: #4361ee;
+}
+
+/* Centered loader */
+.center-loader {
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* List of issued books */
+.issued-books-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+/* Each book card */
+.issued-book-card {
+    display: flex;
+    gap: 16px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+    flex-wrap: wrap;
+}
+
+.issued-book-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Book cover */
+.book-cover {
+    width: 90px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #f2f2f2;
+    flex-shrink: 0;
+}
+
+/* Avatar fallback for books */
+.issued-book-card .ant-avatar {
+    width: 100px;
+    height: 130px;
+    font-size: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Content section of the book */
+.issued-book-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Header of the book card */
+.issued-book-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Book title */
+.issued-book-header h4 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1f36;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Status tag */
+.issued-book-header .ant-tag {
+    margin-left: 8px;
+    font-weight: 600;
+}
+
+/* Book details */
+.issued-book-content p {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .issued-book-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .book-cover,
+    .issued-book-card .ant-avatar {
+        width: 120px;
+        height: 160px;
+    }
+
+    .issued-book-content {
+        width: 100%;
+        margin-top: 12px;
+    }
+
+    .issued-book-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+}
