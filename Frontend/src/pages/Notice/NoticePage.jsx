@@ -1,120 +1,97 @@
-'use client';
-
-import React, { useEffect, useState } from 'react';
-import {
-  Layout,
-  Card,
-  List,
-  Typography,
-  Button,
-  Tag,
-  Spin,
-  message,
-} from 'antd';
-import {
-  NotificationOutlined,
-  CheckCircleOutlined,
-} from '@ant-design/icons';
-import axiosInstance from '../../axiosInstance';
-import './Notice.css';
-
-const { Content } = Layout;
-const { Title, Text } = Typography;
+import React, { useState, useEffect } from "react";
+import axiosInstance from "../../axiosInstance";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
+import "./Notice.css";
 
 const NoticePage = () => {
   const [notices, setNotices] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchNotices();
   }, []);
 
   const fetchNotices = async () => {
+    setLoading(true);
+    setError(null);
     try {
-      const res = await axiosInstance.get('/notices/');
-      setNotices(res.data.results || res.data);
+      const response = await axiosInstance.get("/notices/");
+      setNotices(response.data);
     } catch (err) {
-      message.error('Failed to load notices');
+      console.error("Error fetching notices:", err);
+      setError("Failed to load municipal notices. Please try again later.");
     } finally {
       setLoading(false);
     }
   };
 
-  const markAsRead = async (noticeId) => {
-    try {
-      await axiosInstance.post('/notice-read/', {
-        notice: noticeId,
-      });
-
-      setNotices((prev) =>
-        prev.map((n) =>
-          n.id === noticeId ? { ...n, read: true } : n
-        )
-      );
-
-      message.success('Marked as read');
-    } catch (err) {
-      message.error('Failed to mark as read');
-    }
-  };
+  if (loading) {
+    return (
+      <div className="gov-dashboard-wrapper">
+        <Header />
+        <div className="gov-loader">Loading Municipal Notices...</div>
+        <Footer />
+      </div>
+    );
+  }
 
   return (
-    <Layout className="notice-layout">
-      <Content className="notice-content">
-        <Title level={2} className="notice-title">
-          <NotificationOutlined /> Notices
-        </Title>
+    <div className="gov-dashboard-wrapper">
+      <Header />
 
-        {loading ? (
-          <div className="notice-loading">
-            <Spin size="large" />
+      <div className="notice-hero-section">
+        <div className="notice-hero-overlay">
+          <div className="notice-hero-content">
+            <h1>Official Municipal Notices</h1>
+            <p>Stay updated with the latest announcements, safety alerts, and community updates from city authorities.</p>
+          </div>
+        </div>
+      </div>
+
+      <div className="notice-main-container">
+        {error && <div className="gov-alert error">{error}</div>}
+
+        <div className="notice-section-header">
+          <h2>Active Announcements ({notices.length})</h2>
+          <p>Read official notices published by the administration.</p>
+        </div>
+
+        {notices.length === 0 ? (
+          <div className="notice-empty-card">
+            <h3>No Notices Available</h3>
+            <p>There are no active municipal notices posted at this time.</p>
           </div>
         ) : (
-          <List
-            dataSource={notices}
-            renderItem={(notice) => (
-              <Card
-                className={`notice-card ${
-                  notice.read ? 'read' : 'unread'
-                }`}
-              >
-                <div className="notice-header">
-                  <Title level={4}>{notice.title}</Title>
-
-                  {!notice.read ? (
-                    <Tag color="blue">New</Tag>
-                  ) : (
-                    <Tag icon={<CheckCircleOutlined />} color="green">
-                      Read
-                    </Tag>
-                  )}
+          <div className="notice-cards-grid">
+            {notices.map((notice) => (
+              <div key={notice.id || notice.pk} className="notice-card">
+                <div className="notice-card-header">
+                  <span className="notice-badge">Official Update</span>
+                  <span className="notice-date">
+                    {notice.created_at ? new Date(notice.created_at).toLocaleDateString() : "Recent"}
+                  </span>
                 </div>
+                
+                <h3>{notice.title || notice.subject || "Municipal Notice"}</h3>
+                <p className="notice-text">{notice.description || notice.content || notice.message}</p>
 
-                <Text className="notice-message">
-                  {notice.message}
-                </Text>
-
-                <div className="notice-footer">
-                  <Text type="secondary">
-                    {new Date(notice.created_at).toLocaleString()}
-                  </Text>
-
-                  {!notice.read && (
-                    <Button
-                      type="primary"
-                      size="small"
-                      onClick={() => markAsRead(notice.id)}
-                    >
-                      Mark as Read
-                    </Button>
-                  )}
-                </div>
-              </Card>
-            )}
-          />
+                {notice.file && (
+                  <div className="notice-attachment">
+                    <a href={notice.file} target="_blank" rel="noopener noreferrer" className="btn-attachment">
+                      📎 View Attachment / Document
+                    </a>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         )}
-      </Content>
-    </Layout>
+      </div>
+
+      <Footer />
+    </div>
   );
 };
 

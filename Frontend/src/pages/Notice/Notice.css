@@ -1,53 +1,162 @@
-.notice-layout {
+/* Municipal Notice Page Theme Styling */
+
+.gov-dashboard-wrapper {
+    background-color: #f8f9fa;
     min-height: 100vh;
-    background: #f5f7fa;
-    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    color: #333;
 }
 
-.notice-content {
-    max-width: 900px;
+/* Hero Section */
+.notice-hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)),
+        url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    padding: 80px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.notice-hero-content {
+    max-width: 700px;
     margin: 0 auto;
 }
 
-.notice-title {
+.notice-hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.notice-hero-content p {
+    font-size: 1.1rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+/* Main Container */
+.notice-main-container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
+    flex: 1;
+}
+
+.notice-section-header {
     margin-bottom: 30px;
-    text-align: center;
 }
 
+.notice-section-header h2 {
+    font-size: 1.8rem;
+    color: #111;
+    font-weight: 700;
+}
+
+.notice-section-header p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* Grid layout for notice cards */
+.notice-cards-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+/* Individual Notice Card */
 .notice-card {
-    margin-bottom: 20px;
+    background: #ffffff;
     border-radius: 12px;
-    transition: all 0.3s ease;
+    padding: 24px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border: 1px solid #eaeaea;
+    border-left: 5px solid #008751;
+    /* Emerald Green accent strip */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.notice-card.unread {
-    border-left: 5px solid #1890ff;
-    background: #f0f8ff;
+.notice-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
 }
 
-.notice-card.read {
-    opacity: 0.9;
-}
-
-.notice-header {
+.notice-card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 12px;
 }
 
-.notice-message {
-    display: block;
-    margin: 15px 0;
-    font-size: 15px;
+.notice-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #008751;
+    background: #e6f4ea;
+    padding: 3px 10px;
+    border-radius: 6px;
+    text-transform: uppercase;
 }
 
-.notice-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.notice-date {
+    font-size: 0.85rem;
+    color: #888;
 }
 
-.notice-loading {
+.notice-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 10px;
+}
+
+.notice-text {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.notice-attachment {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #edf2f7;
+}
+
+.btn-attachment {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #008751;
+    font-weight: 600;
+    text-decoration: none;
+    background: #f0fdf4;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #bbf7d0;
+    transition: background 0.2s;
+}
+
+.btn-attachment:hover {
+    background: #dcfce7;
+}
+
+/* Empty State */
+.notice-empty-card {
+    background: #fff;
+    padding: 50px;
     text-align: center;
-    margin-top: 50px;
+    border-radius: 12px;
+    border: 1px solid #eaeaea;
+}
+
+.notice-empty-card h3 {
+    font-size: 1.2rem;
+    color: #2d3748;
+    margin-bottom: 5px;
+}
+
+.notice-empty-card p {
+    color: #718096;
 }

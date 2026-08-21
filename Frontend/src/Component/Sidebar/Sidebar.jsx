@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Layout, Menu, Avatar, Dropdown, Space, Button, Badge, Spin } from "antd";
 import {
   BookOutlined,
@@ -11,7 +11,6 @@ import {
   BellOutlined,
 } from "@ant-design/icons";
 import { useNavigate, useLocation } from "react-router-dom";
-import axiosInstance from "../../axiosInstance";
 import { useAuth } from "../../context/AuthContext";
 import "./Sidebar.css";
 
@@ -23,12 +22,8 @@ const Sidebar = ({ onLogout }) => {
   const { user } = useAuth();
 
   const [collapsed, setCollapsed] = useState(false);
-  const [unreadCount, setUnreadCount] = useState(0);
-  const [loading, setLoading] = useState(false);
-
-  /* ================= LOAD NOTICES ================= */
-  
-
+  const [unreadCount] = useState(0);
+  const [loading] = useState(false);
 
   /* ================= MENU ITEMS ================= */
   const menuItems = [
@@ -65,7 +60,7 @@ const Sidebar = ({ onLogout }) => {
     {
       key: "/notices",
       icon: (
-        <Badge count={unreadCount} size="small">
+        <Badge count={unreadCount} size="small" offset={[4, 0]}>
           <BellOutlined />
         </Badge>
       ),
@@ -75,81 +70,95 @@ const Sidebar = ({ onLogout }) => {
   ];
 
   /* ================= USER DROPDOWN ================= */
-  const userMenu = [
-    {
-      key: "profile",
-      label: "Profile",
-      icon: <UserOutlined />,
-      onClick: () => navigate("/profile"),
-    },
-    {
-      type: "divider",
-    },
-    {
-      key: "logout",
-      label: "Logout",
-      icon: <LogoutOutlined />,
-      onClick: () => {
-        onLogout();
-        navigate("/login");
+  const userMenu = {
+    items: [
+      {
+        key: "profile",
+        label: "Profile Settings",
+        icon: <UserOutlined />,
+        onClick: () => navigate("/profile"),
       },
-    },
-  ];
+      {
+        type: "divider",
+      },
+      {
+        key: "logout",
+        label: "Sign Out",
+        icon: <LogoutOutlined />,
+        danger: true,
+        onClick: () => {
+          onLogout();
+          navigate("/login");
+        },
+      },
+    ],
+  };
 
-  if (loading) return <Spin />;
+  if (loading) {
+    return (
+      <div className="sidebar-loader">
+        <Spin size="large" />
+      </div>
+    );
+  }
 
   return (
     <Sider
       collapsible
       collapsed={collapsed}
       onCollapse={(value) => setCollapsed(value)}
-      className="sidebar"
-      width={250}
+      className="modern-sidebar"
+      width={260}
+      breakpoint="lg"
     >
-      {/* Logo */}
-      <div className="sidebar-logo">
-        <h2>{collapsed ? "LMS" : "Library"}</h2>
+      {/* Brand Logo Header */}
+      <div className="sidebar-brand">
+        <div className="brand-icon-wrapper">
+          <BookOutlined />
+        </div>
+        {!collapsed && <h2 className="brand-title">Marvel<span>Nexus</span></h2>}
       </div>
 
-      {/* User Info */}
-      <div className="sidebar-user">
-        <Dropdown menu={{ items: userMenu }} placement="topRight">
-          <Space className="user-info" style={{ cursor: "pointer" }}>
-            <Avatar icon={<UserOutlined />} />
+      {/* User Profile Card Widget */}
+      <div className="sidebar-user-section">
+        <Dropdown menu={userMenu} placement="bottomRight" trigger={['click']}>
+          <div className="user-profile-card">
+            <Avatar className="user-avatar" icon={<UserOutlined />} />
             {!collapsed && (
-              <div className="user-details">
-                <p className="user-name">{user?.username || "Employee"}</p>
-                <p className="user-role">
-                  {(user?.Role || user?.role || "employee").toLowerCase()}
-                </p>
+              <div className="user-info-text">
+                <span className="user-name">{user?.username || "Citizen User"}</span>
+                <span className="user-role-tag">
+                  {(user?.Role || user?.role || "Citizen").toUpperCase()}
+                </span>
               </div>
             )}
-          </Space>
+          </div>
         </Dropdown>
       </div>
 
-      {/* Menu */}
+      {/* Navigation Menu */}
       <Menu
         theme="dark"
         mode="inline"
         selectedKeys={[location.pathname]}
         items={menuItems}
-        className="sidebar-menu"
+        className="sidebar-nav-menu"
       />
 
-      {/* Footer Logout */}
-      <div className="sidebar-footer">
+      {/* Footer Action Area */}
+      <div className="sidebar-bottom-action">
         <Button
-          type="primary"
+          type="text"
           danger
           block
           icon={<LogoutOutlined />}
+          className="sidebar-logout-btn"
           onClick={() => {
             onLogout();
             navigate("/login");
           }}
         >
-          {collapsed ? "" : "Logout"}
+          {!collapsed && <span>Sign Out</span>}
         </Button>
       </div>
     </Sider>

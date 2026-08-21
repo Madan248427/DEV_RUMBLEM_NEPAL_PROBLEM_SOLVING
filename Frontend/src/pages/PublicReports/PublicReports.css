@@ -1,0 +1,278 @@
+/* Public Reports Theme Styling matching Government/Municipal Dashboard */
+
+.gov-dashboard-wrapper {
+    background-color: #f8f9fa;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    color: #333;
+}
+
+/* Hero Section */
+.pub-hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('https://images.unsplash.com/photo-1517732306149-e8f829eb588a?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    padding: 80px 20px;
+    text-align: center;
+    color: #fff;
+}
+
+.pub-hero-content max-width {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.pub-hero-content h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.pub-hero-content p {
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    line-height: 1.5;
+}
+
+/* Main Container */
+.pub-main-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
+    flex: 1;
+}
+
+.pub-section-header {
+    margin-bottom: 30px;
+}
+
+.pub-section-header h2 {
+    font-size: 1.8rem;
+    color: #111;
+    font-weight: 700;
+}
+
+.pub-section-header p {
+    color: #666;
+    font-size: 0.95rem;
+    margin-top: 5px;
+}
+
+/* Grid layout for reports */
+.pub-reports-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 24px;
+}
+
+/* Individual Report Card */
+.pub-report-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eaeaea;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pub-report-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.pub-card-image-wrapper {
+    position: relative;
+    height: 200px;
+    width: 100%;
+    background: #222;
+}
+
+.pub-card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pub-severity-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 20px;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.severity-low {
+    background-color: #319795;
+}
+
+.severity-medium {
+    background-color: #d69e2e;
+}
+
+.severity-high {
+    background-color: #e53e3e;
+}
+
+.pub-card-body {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.pub-card-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.pub-category-tag {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #008751;
+    background: #e6f4ea;
+    padding: 3px 10px;
+    border-radius: 6px;
+}
+
+.pub-status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    text-transform: capitalize;
+}
+
+.status-pending {
+    background-color: #feebc8;
+    color: #9c4221;
+}
+
+.status-in_progress {
+    background-color: #bee3f8;
+    color: #2b6cb0;
+}
+
+.status-resolved {
+    background-color: #c6f6d5;
+    color: #22543d;
+}
+
+.status-rejected {
+    background-color: #fed7d7;
+    color: #9b2c2c;
+}
+
+.pub-card-body h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 8px;
+}
+
+.pub-desc {
+    font-size: 0.95rem;
+    color: #4a5568;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+.pub-location-block {
+    font-size: 0.85rem;
+    color: #718096;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.pub-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #edf2f7;
+    padding-top: 15px;
+    margin-top: auto;
+}
+
+.pub-author-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    color: #4a5568;
+}
+
+.pub-date {
+    color: #a0aec0;
+    font-size: 0.75rem;
+}
+
+/* Emerald Green Vote Button */
+.btn-vote-green {
+    background-color: #008751;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-vote-green:hover {
+    background-color: #006c40;
+}
+
+.btn-vote-green:disabled {
+    background-color: #cbd5e0;
+    cursor: not-allowed;
+}
+
+/* Empty states */
+.pub-empty-card {
+    background: #fff;
+    padding: 40px;
+    text-align: center;
+    border-radius: 12px;
+    border: 1px solid #eaeaea;
+}
+
+.pub-empty-card h3 {
+    font-size: 1.2rem;
+    color: #2d3748;
+    margin-bottom: 5px;
+}
+
+.pub-empty-card p {
+    color: #718096;
+}
+
+.gov-loader {
+    text-align: center;
+    padding: 100px;
+    font-size: 1.2rem;
+    color: #4a5568;
+}
+
+.gov-alert.error {
+    background: #fed7d7;
+    color: #9b2c2c;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}

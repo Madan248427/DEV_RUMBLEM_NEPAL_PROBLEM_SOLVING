@@ -52,15 +52,14 @@ const Login = () => {
 
         message.success("Login successful!")
 
-        const role = (loggedInUser.role || loggedInUser.Role || "user")
+        // Updated to match your Django model roles: 'admin', 'organizer', 'employee', 'citizen', 'user'
+        const role = (loggedInUser.role || loggedInUser.Role || "citizen")
           .toString()
           .toLowerCase()
 
-        if (role === "admin") {
+        if (role === "admin" || role === "organizer" || role === "employee") {
           navigate("/dashboard", { replace: true })
-        } else if (role === "employee") {
-          navigate("/dashboard", { replace: true })
-        } else if (role === "user") {
+        } else if (role === "citizen" || role === "user") {
           navigate("/user-dashboard", { replace: true })
         } else {
           navigate("/", { replace: true })
@@ -87,12 +86,12 @@ const Login = () => {
             <div className="login-logo">
               <BookOutlined />
             </div>
-            <h2 className="login-brand-name">Marvel Nexus</h2>
+            <h2 className="login-brand-name">Hamro Nepal</h2>
           </div>
 
           <h1 className="login-title">Welcome Back</h1>
           <p className="login-subtitle">
-            Sign in to manage your library account
+            Sign in to manage your Hamro Nepal account
           </p>
 
           <Form
@@ -180,18 +179,19 @@ const Login = () => {
       <div className="login-right">
         <div className="login-image-overlay"></div>
         <img
-          src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?q=80&w=1000&auto=format&fit=crop"
+          alt="Beautiful mountain landscape of Nepal"
+          className="login-hero-image"
+
           alt="Library interior with warm lighting and bookshelves"
           className="login-hero-image"
         />
         <div className="login-image-content">
           <h2 className="login-image-title">
-            Your Gateway to Knowledge
+            Your Samll Contribute Can Change Nepal
           </h2>
           <p className="login-image-text">
-            Discover, borrow, and explore thousands of books in our curated
-            collection.
-          </p>
+            Discover, Learn, and Summit Reports and Get it fixed </p>
           <div className="login-image-stats">
             <div className="login-stat">
               <span className="login-stat-number">50K+</span>

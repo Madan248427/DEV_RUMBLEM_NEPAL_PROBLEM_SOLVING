@@ -1,98 +1,185 @@
-.sidebar {
-  background: #001529;
+/* Modern Sidebar Styling with Glassmorphism & High-End Effects */
+.modern-sidebar {
+  background: linear-gradient(180deg, #0f172a 0%, #090d16 100%) !important;
   height: 100vh;
-  position: sticky;
+  position: sticky !important;
   top: 0;
+  left: 0;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 101;
   display: flex;
   flex-direction: column;
 }
 
-.sidebar-logo {
-  padding: 16px;
-  text-align: center;
-  background: #0c0e16;
-  border-bottom: 1px solid #414141;
-}
-
-.sidebar-logo h2 {
-  color: #1890ff;
-  margin: 0;
-  font-weight: 700;
-  font-size: 18px;
-}
-
-.sidebar-user {
-  padding: 16px;
-  border-bottom: 1px solid #414141;
-}
-
-.user-info {
-  width: 100%;
+/* Brand Header */
+.sidebar-brand {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px;
-  border-radius: 4px;
-  transition: background 0.3s;
+  gap: 12px;
+  padding: 20px 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
 }
 
-.user-info:hover {
-  background: rgba(255, 255, 255, 0.1);
+.brand-icon-wrapper {
+  background: #10b981;
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 18px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
-.user-details {
+.brand-title {
+  color: #ffffff;
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  white-space: nowrap;
+}
+
+.brand-title span {
+  color: #10b981;
+}
+
+/* User Profile Widget */
+.sidebar-user-section {
+  padding: 14px 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.user-profile-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.user-profile-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.user-avatar {
+  background-color: #10b981 !important;
+  color: #ffffff;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.user-info-text {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  overflow: hidden;
 }
 
 .user-name {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 12px;
+  color: #f3f4f6;
+  font-size: 0.875rem;
   font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.user-role {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.45);
-  font-size: 11px;
+.user-role-tag {
+  color: #10b981;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-.sidebar-menu {
+/* Ant Design Menu Overrides */
+.sidebar-nav-menu {
+  background: transparent !important;
   flex: 1;
   overflow-y: auto;
-  border-right: none;
+  padding: 8px 0;
+  border-right: none !important;
 }
 
-.sidebar-menu .ant-menu-item {
-  height: 40px;
-  line-height: 40px;
-  margin: 4px 8px;
-  border-radius: 4px;
-  transition: all 0.3s;
-}
-
-.sidebar-footer {
-  padding: 16px;
-  border-top: 1px solid #414141;
-  background: #0c0e16;
-}
-
-.sidebar-footer button {
-  height: 40px;
+.sidebar-nav-menu .ant-menu-item {
+  height: 44px !important;
+  line-height: 44px !important;
+  margin: 6px 12px !important;
+  width: calc(100% - 24px) !important;
+  border-radius: 8px !important;
+  color: #9ca3af !important;
   font-weight: 500;
+  transition: all 0.2s ease;
 }
 
-@media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-  }
+.sidebar-nav-menu .ant-menu-item-icon {
+  font-size: 16px !important;
+  color: #9ca3af !important;
+  transition: color 0.2s ease;
+}
 
-  .sidebar-logo h2 {
-    font-size: 16px;
-  }
+.sidebar-nav-menu .ant-menu-item:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+.sidebar-nav-menu .ant-menu-item:hover .ant-menu-item-icon {
+  color: #10b981 !important;
+}
+
+.sidebar-nav-menu .ant-menu-item-selected {
+  background-color: #10b981 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+.sidebar-nav-menu .ant-menu-item-selected .ant-menu-item-icon {
+  color: #ffffff !important;
+}
+
+/* Footer Logout Action */
+.sidebar-bottom-action {
+  padding: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-logout-btn {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 40px !important;
+  border-radius: 8px !important;
+  color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.08) !important;
+  border: 1px solid rgba(239, 68, 68, 0.2) !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+}
+
+.sidebar-logout-btn:hover {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #ef4444 !important;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.sidebar-loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #0f172a;
 }

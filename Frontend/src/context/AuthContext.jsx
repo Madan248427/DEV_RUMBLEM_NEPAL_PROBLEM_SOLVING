@@ -1,7 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useEffect, useState, useRef } from "react";
-import axiosInstance, { markLoggedOut } from "../axiosInstance";
+import axiosInstance, { markLoggedOut, resetLogoutState } from "../axiosInstance";
 
 const AuthContext = createContext(null);
 
@@ -14,8 +14,10 @@ export const AuthProvider = ({ children }) => {
   const fetchUser = async () => {
     try {
       const res = await axiosInstance.get("/accounts/me/");
-      setUser({ ...res.data, role: res.data.Role?.toLowerCase() }); // normalize role
-      return res.data;
+      const rawRole = res.data.role || res.data.Role || "user";
+      const normalizedUser = { ...res.data, role: rawRole.toString().toLowerCase() };
+      setUser(normalizedUser);
+      return normalizedUser;
     } catch (err) {
       setUser(null);
       return null;
@@ -35,6 +37,7 @@ export const AuthProvider = ({ children }) => {
   // LOGIN
   const login = async (email, password) => {
     try {
+      resetLogoutState(); // Clear the lock out flag before attempting to log in
       await axiosInstance.post("/accounts/login/", { email, password });
       const loggedInUser = await fetchUser();
       return { success: true, user: loggedInUser };

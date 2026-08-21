@@ -1,14 +1,16 @@
 /* =============================
-   LOGIN PAGE - FULL SCREEN SPLIT
+   MAIN SPLIT LAYOUT
 ============================== */
 .login-page {
     display: flex;
     min-height: 100vh;
+    width: 100%;
     background: #fdfbf5;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 /* =============================
-   LEFT PANEL
+   LEFT PANEL (FORM)
 ============================== */
 .login-left {
     flex: 1;
@@ -22,16 +24,15 @@
 .login-form-container {
     width: 100%;
     max-width: 420px;
+    animation: login-fadeUp 0.6s ease-out;
 }
 
-/* =============================
-   BRAND / LOGO
-============================== */
+/* BRAND LOGO */
 .login-brand {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
 }
 
 .login-logo {
@@ -43,7 +44,7 @@
     align-items: center;
     justify-content: center;
     font-size: 22px;
-    color: #fff;
+    color: #ffffff;
     box-shadow: 0 4px 12px rgba(200, 169, 81, 0.3);
 }
 
@@ -55,9 +56,7 @@
     letter-spacing: -0.5px;
 }
 
-/* =============================
-   TITLE & SUBTITLE
-============================== */
+/* TITLES */
 .login-title {
     font-size: 32px;
     font-weight: 800;
@@ -69,13 +68,29 @@
 .login-subtitle {
     font-size: 15px;
     color: #8a7a50;
-    margin: 0 0 36px 0;
+    margin: 0 0 28px 0;
 }
 
-/* =============================
-   FORM ELEMENTS
-============================== */
-.login-form .ant-form-item {
+/* ERROR ALERT */
+.login-error-alert {
+    background-color: #fff1f0;
+    border: 1px solid #ffa39e;
+    color: #cf1322;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+/* FORM ELEMENTS */
+.login-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form-item {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 20px;
 }
 
@@ -83,57 +98,86 @@
     font-weight: 600;
     color: #3b3000;
     font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.login-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.login-input-icon {
+    position: absolute;
+    left: 14px;
+    color: #c8a951;
+    font-size: 18px;
+    pointer-events: none;
+    z-index: 2;
 }
 
 .login-input {
-    border-radius: 10px !important;
-    border: 1.5px solid #e8e0c8 !important;
-    height: 48px !important;
-    background: #fff !important;
+    width: 100%;
+    height: 48px;
+    padding: 0 40px 0 44px;
+    border-radius: 10px;
+    border: 1.5px solid #e8e0c8;
+    background: #ffffff;
     font-size: 15px;
+    color: #2c2200;
+    outline: none;
+    box-sizing: border-box;
     transition: all 0.2s ease;
 }
 
 .login-input:hover {
-    border-color: #d4b44a !important;
+    border-color: #d4b44a;
 }
 
-.login-input:focus,
-.login-input.ant-input-affix-wrapper-focused {
-    border-color: #c8a951 !important;
-    box-shadow: 0 0 0 3px rgba(200, 169, 81, 0.12) !important;
+.login-input:focus {
+    border-color: #c8a951;
+    box-shadow: 0 0 0 3px rgba(200, 169, 81, 0.15);
 }
 
-.login-input-icon {
-    color: #c8a951 !important;
-    font-size: 16px;
+.password-toggle-btn {
+    position: absolute;
+    right: 12px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #8a7a50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    z-index: 2;
 }
 
-.login-input .ant-input {
-    background: transparent !important;
-}
-
-/* Password input wrapper */
-.login-input.ant-input-password {
-    padding: 0 11px;
-}
-
-/* =============================
-   OPTIONS ROW
-============================== */
+/* FORM OPTIONS (CHECKBOX & FORGOT LINK) */
 .login-options {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 24px;
 }
 
-.login-checkbox .ant-checkbox-checked .ant-checkbox-inner {
-    background-color: #c8a951 !important;
-    border-color: #c8a951 !important;
+.login-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #3b3000;
+    cursor: pointer;
+    user-select: none;
 }
 
-.login-checkbox .ant-checkbox-inner:hover {
-    border-color: #c8a951 !important;
+.login-checkbox-input {
+    accent-color: #c8a951;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
 }
 
 .login-forgot {
@@ -146,39 +190,44 @@
 
 .login-forgot:hover {
     color: #a88d30;
+    text-decoration: underline;
 }
 
-/* =============================
-   SUBMIT BUTTON
-============================== */
+/* SUBMIT BUTTON */
 .login-submit-btn {
-    height: 50px !important;
-    border-radius: 12px !important;
-    background: linear-gradient(135deg, #c8a951 0%, #dbb840 100%) !important;
-    border: none !important;
-    font-size: 16px !important;
-    font-weight: 700 !important;
+    width: 100%;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #c8a951 0%, #dbb840 100%);
+    border: none;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
     letter-spacing: 0.3px;
-    box-shadow: 0 4px 16px rgba(200, 169, 81, 0.35) !important;
-    transition: all 0.25s ease !important;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(200, 169, 81, 0.35);
+    transition: all 0.25s ease;
 }
 
-.login-submit-btn:hover {
-    background: linear-gradient(135deg, #b8992a 0%, #c8a530 100%) !important;
-    box-shadow: 0 6px 24px rgba(200, 169, 81, 0.45) !important;
+.login-submit-btn:hover:not(:disabled) {
+    background: linear-gradient(135deg, #b8992a 0%, #c8a530 100%);
+    box-shadow: 0 6px 24px rgba(200, 169, 81, 0.45);
     transform: translateY(-1px);
 }
 
-.login-submit-btn:active {
+.login-submit-btn:active:not(:disabled) {
     transform: translateY(0);
 }
 
-/* =============================
-   SIGNUP LINK
-============================== */
+.login-submit-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* SIGNUP LINK FOOTER */
 .login-signup-link {
     text-align: center;
-    margin-top: 8px;
+    margin-top: 20px;
     font-size: 14px;
     color: #8a7a50;
 }
@@ -196,7 +245,7 @@
 }
 
 /* =============================
-   RIGHT PANEL - IMAGE
+   RIGHT PANEL (HERO IMAGE)
 ============================== */
 .login-right {
     flex: 1.1;
@@ -229,12 +278,13 @@
     right: 0;
     padding: 48px 40px;
     z-index: 2;
+    animation: login-fadeUp 0.8s ease-out 0.2s both;
 }
 
 .login-image-title {
     font-size: 30px;
     font-weight: 800;
-    color: #fff;
+    color: #ffffff;
     margin: 0 0 10px 0;
     letter-spacing: -0.3px;
     text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
@@ -248,9 +298,7 @@
     line-height: 1.6;
 }
 
-/* =============================
-   STATS ROW
-============================== */
+/* STATS BAR */
 .login-image-stats {
     display: flex;
     align-items: center;
@@ -292,8 +340,20 @@
 }
 
 /* =============================
-   RESPONSIVE
+   ANIMATIONS & RESPONSIVE
 ============================== */
+@keyframes login-fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 @media (max-width: 900px) {
     .login-page {
         flex-direction: column;
@@ -308,62 +368,20 @@
         padding: 32px 24px;
     }
 
+    .login-image-content {
+        padding: 28px 24px;
+    }
+
     .login-image-title {
         font-size: 24px;
     }
 
     .login-image-stats {
         gap: 16px;
-        padding: 14px 20px;
+        padding: 12px 18px;
     }
 
     .login-stat-number {
         font-size: 18px;
     }
-}
-
-@media (max-width: 480px) {
-    .login-form-container {
-        max-width: 100%;
-    }
-
-    .login-title {
-        font-size: 26px;
-    }
-
-    .login-left {
-        padding: 24px 16px;
-    }
-
-    .login-image-content {
-        padding: 24px 20px;
-    }
-
-    .login-image-stats {
-        gap: 12px;
-        padding: 12px 16px;
-    }
-}
-
-/* =============================
-   ANIMATIONS
-============================== */
-@keyframes login-fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.login-form-container {
-    animation: login-fadeUp 0.6s ease-out;
-}
-
-.login-image-content {
-    animation: login-fadeUp 0.8s ease-out 0.2s both;
 }

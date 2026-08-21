@@ -5,13 +5,22 @@ import { useAuth } from "../context/AuthContext";
 
 const PublicRoute = () => {
   const { user, loading } = useAuth();
-  console.log("USER:", user);
 
   if (loading) return <div>Loading...</div>;
 
-  if (user?.role === "employee") return <Navigate to="/dashboard" replace />;
-  if (user?.role === "user") return <Navigate to="/user-dashboard" replace />;
+  // Extract role checking both uppercase 'Role' and lowercase 'role'
+  const role = (user?.Role || user?.role || "").toLowerCase();
 
+  // Redirect authenticated users to their dashboard based on backend roles safely
+  if (role === "admin" || role === "organizer" || role === "employee") {
+    return <Navigate to="/dashboard" replace />;
+  }
+
+  if (role === "citizen" || role === "user") {
+    return <Navigate to="/user-dashboard" replace />;
+  }
+
+  // Allow unauthenticated guests to view public routes
   return <Outlet />;
 };
 

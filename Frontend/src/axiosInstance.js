@@ -1,18 +1,25 @@
 import axios from "axios"
 
-const BASE_URL = "http://127.0.0.1:8000/api"
+const BASE_URL = "https://cfcf-182-93-68-229.ngrok-free.app/api"
 
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   withCredentials: true,
+  headers: {
+    "ngrok-skip-browser-warning": "69420", // Bypass Ngrok free-tier landing page
+  },
 })
 
 let isRefreshing = false
 let refreshPromise = null
-let isLoggedOut = false   // 🔥 THE KEY FIX
+let isLoggedOut = false
 
 export const markLoggedOut = () => {
   isLoggedOut = true
+}
+
+export const resetLogoutState = () => {
+  isLoggedOut = false
 }
 
 axiosInstance.interceptors.response.use(
@@ -24,11 +31,11 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(error)
     }
 
-const noRefreshUrls = [
-  "/accounts/login/",
-  "/accounts/logout/",
-  "/accounts/refresh/",
-]
+    const noRefreshUrls = [
+      "/accounts/login/",
+      "/accounts/logout/",
+      "/accounts/refresh/",
+    ]
 
     if (
       error.response?.status === 401 &&
@@ -41,10 +48,17 @@ const noRefreshUrls = [
         if (!isRefreshing) {
           isRefreshing = true
           refreshPromise = axios
-            .post(`${BASE_URL}/accounts/refresh/`, {}, { withCredentials: true })
+            .post(
+              `${BASE_URL}/accounts/refresh/`,
+              {},
+              {
+                withCredentials: true,
+                headers: { "ngrok-skip-browser-warning": "69420" },
+              }
+            )
             .finally(() => {
               isRefreshing = false
-              refreshPromise = null    // RESET so next cycle creates a new promise
+              refreshPromise = null
             })
         }
 
@@ -52,13 +66,11 @@ const noRefreshUrls = [
         return axiosInstance(originalRequest)
       } catch (refreshError) {
         isLoggedOut = true
-        // window.location.href = "/login"
         return Promise.reject(refreshError)
       }
     }
 
     return Promise.reject(error)
-  
   }
 )
 

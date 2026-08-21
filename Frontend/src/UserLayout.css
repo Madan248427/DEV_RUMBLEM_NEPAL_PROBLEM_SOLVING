@@ -1,29 +1,27 @@
-/* Layout wrapper */
 .user-layout {
     display: flex;
-}
-
-/* Main content area */
-.user-main {
-    margin-left: 260px;
-    /* same as sidebar width */
-    width: calc(100% - 260px);
-    min-width: 0;
-    /* 🔥 VERY IMPORTANT */
-    padding: 24px;
-    box-sizing: border-box;
-}
-
-/* Prevent global horizontal scroll */
-body {
+    min-height: 100vh;
+    background-color: #f5f7fa;
+    width: 100vw;
     overflow-x: hidden;
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    .user-main {
-        margin-left: 0;
-        width: 100%;
-        padding: 16px;
-    }
+.user-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.layout-page-content {
+    flex: 1;
+    box-sizing: border-box;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
 }

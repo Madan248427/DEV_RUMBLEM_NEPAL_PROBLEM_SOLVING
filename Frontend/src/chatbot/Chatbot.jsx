@@ -24,7 +24,7 @@ const Chatbot = () => {
   const fetchJWTFromBackend = async () => {
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/api/accounts/rasa-token/",
+        "https://cfcf-182-93-68-229.ngrok-free.app/api/accounts/rasa-token/",
         {
           method: "GET",
           credentials: "include",
@@ -76,7 +76,7 @@ const Chatbot = () => {
       const jwtToken = await fetchJWTFromBackend();
 
       const response = await fetch(
-        "http://127.0.0.1:8000/ch/chat/",
+        "https://cfcf-182-93-68-229.ngrok-free.app/ch/chat/",
         {
           method: "POST",
           credentials: "include",
@@ -156,7 +156,7 @@ const Chatbot = () => {
           id="chatbot-container"
           title={
             <span className="chatbot-title">
-              {"Marvel Nexus"} <span className="chatbot-title-icon">{"📚"}</span>
+              {"Hamro Nepal"} <span className="chatbot-title-icon">{"📚"}</span>
             </span>
           }
           size="small"
@@ -179,7 +179,7 @@ const Chatbot = () => {
           <div className="chatbot-messages">
             {messages.length === 0 && (
               <div className="chatbot-welcome">
-                {"Hi! How can I help you find books today?"}
+                {"Hi! How may I help you today?"}
               </div>
             )}
 
